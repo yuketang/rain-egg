@@ -6,6 +6,10 @@
 //   package: 'egg-view-nunjucks',
 // };
 
+exports.i18n = {
+    enable: true,
+    package: 'egg-i18n',
+};
 
 exports.validate = {
   enable: false,

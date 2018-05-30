@@ -1,7 +1,7 @@
 module.exports = {
-  Email: 'email',
-  'Welcome back, %s!': '欢迎回来，%s!', // ctx.__('Welcome back, %s!', 'Shawn');
-  'Hello {0}! My name is {1}.': '你好 {0}! 我的名字叫 {1}。', // ctx.__('Hello {0}! My name is {1}.', ['foo', 'bar'])
+  "Email": "email",
+  "Welcome back, %s!": "欢迎回来，%s!",                      // ctx.__('Welcome back, %s!', 'Shawn');
+  "Hello {0}! My name is {1}.": "你好 {0}! 我的名字叫 {1}。", // ctx.__('Hello {0}! My name is {1}.', ['foo', 'bar'])
 
 
   /** ********************************************************* start errcode ==> errmsg ***********************************************************/

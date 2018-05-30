@@ -43,6 +43,7 @@ module.exports = appInfo => {
     //   'first',
     //   'meta',
     //   'siteFile',
+    //   'fmtResponse',
     //   'accessLog',
     //   'error404',
     //   'bodyParser',
@@ -56,7 +57,7 @@ module.exports = appInfo => {
     maxAge: 86400000, // Session 的最大有效时间
 
     // middleware: ['accessLog'], // 框架中不能配置，配置需要的中间件，数组顺序即为中间件的加载顺序，名字为文件名,驼峰命名，不支持下划线命名
-    // accessLog: {                 // 配置 gzip 中间件的配置
+    // accessLog: {                // 配置 gzip 中间件的配置
     //     enable: true, //控制中间件是否开启。
     // },
     customLogger: {
@@ -279,5 +280,6 @@ module.exports = appInfo => {
   console.log('=================================config.env', config.env);
   console.log('=================================app', appInfo);
 
+  config.HEADER_LANGUAGE = 'X-LANGUAGE';
   return config;
 };

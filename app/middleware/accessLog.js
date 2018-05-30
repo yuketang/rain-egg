@@ -3,36 +3,37 @@ const util = require('util');
 const uuid = require('uuid');
 
 module.exports = options => {
-  const skipExt = [ '.png', '.jpeg', '.jpg', '.ico', '.gif' ];
-  return async function accessLog(ctx, next) {
-    const start = Date.now();
-    ctx.traceId = uuid.v1();
-    await next();
+    let {header} = this.ctx;
 
-    const rs = Math.ceil(Date.now() - start);
+    return async function accessLog(ctx, next) {
+        const start = Date.now();
+        ctx.traceId = uuid.v1();
+        await next();
 
-    ctx.set('X-Response-Time', rs);
+        const rs = Math.ceil(Date.now() - start);
 
-    const ext = path.extname(ctx.url).toLocaleLowerCase();
-    const isSkip = skipExt.indexOf(ext) !== -1 && ctx.status < 400;
+        ctx.set('X-Response-Time', rs);
 
-    if (!isSkip) {
-      const ip = ctx.ip;
-      const protocol = ctx.protocol.toUpperCase();
-      const response = JSON.stringify(ctx.body);
-      const query = JSON.stringify(ctx.request.query);
-      const body = JSON.stringify(ctx.request.body);
-      const method = ctx.method;
-      const url = ctx.url;
-      const status = ctx.status;
-      const length = ctx.length || '-';
-      const referrer = ctx.get('referrer') || '-';
-      const ua = ctx.get('user-agent') || '-';
-      const serverTime = ctx.response.get('X-Server-Response-Time') || '-';
-      const message = util.format('[access] %s %s %s %s %s %sms %sbytes %s %s %s %s %s %s',
-        ip, method, protocol, status, url, rs, length, body, response, referrer, serverTime, ua);
-      ctx.accessLogger.info(message);
-    }
-  };
+        const ext = path.extname(ctx.url).toLocaleLowerCase();
+        const isSkip = skipExt.indexOf(ext) !== -1 && ctx.status < 400;
+
+        if (!isSkip) {
+            const ip = ctx.ip;
+            const protocol = ctx.protocol.toUpperCase();
+            const response = JSON.stringify(ctx.body);
+            const query = JSON.stringify(ctx.request.query);
+            const body = JSON.stringify(ctx.request.body);
+            const method = ctx.method;
+            const url = ctx.url;
+            const status = ctx.status;
+            const length = ctx.length || '-';
+            const referrer = ctx.get('referrer') || '-';
+            const ua = ctx.get('user-agent') || '-';
+            const serverTime = ctx.response.get('X-Server-Response-Time') || '-';
+            const message = util.format('[access] %s %s %s %s %s %sms %sbytes %s %s %s %s %s %s',
+                ip, method, protocol, status, url, rs, length, body, response, referrer, serverTime, ua);
+            ctx.accessLogger.info(message);
+        }
+    };
 };
 
