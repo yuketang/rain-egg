@@ -24,13 +24,6 @@ module.exports = appInfo => {
         tracer: {
             Class: require('../lib/Tracer.js'),
         },
-        i18n: {
-            defaultLocale: 'en',
-            queryField: 'Language',
-            // cookieField: 'X-Language',
-            // Cookie 默认一年后过期， 如果设置为 Number，则单位为 ms
-            // cookieMaxAge: '1y',
-        },
         static: {
             prefix: '',
             dir: path.join(appInfo.baseDir, 'app/public'),
@@ -52,8 +45,6 @@ module.exports = appInfo => {
         siteFile: {
             '/favicon.ico': fs.readFileSync(path.join(__dirname, 'favicon.ico')),
         },
-        keys: appInfo.name + '_1516760281281_2161', // use for cookie sign key, should change to your own and keep security
-        key: 'EGG_SESS', // 承载 Session 的 Cookie 键值对名字
         maxAge: 86400000, // Session 的最大有效时间
 
         // middleware: ['accessLog'], // 框架中不能配置，配置需要的中间件，数组顺序即为中间件的加载顺序，名字为文件名,驼峰命名，不支持下划线命名
@@ -277,9 +268,7 @@ module.exports = appInfo => {
         },
     };
 
-    console.log('=================================config.env', config.env);
-    console.log('=================================app', appInfo);
 
-    config.HEADER_LANGUAGE = 'X-LANGUAGE';
+    config.HEADER_LANGUAGE = 'X-Language';
     return config;
 };
