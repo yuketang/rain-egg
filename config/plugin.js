@@ -35,9 +35,9 @@ exports.tracer = {
 exports.i18n = { // enable by default
   enable: false
 };
-
-exports.rainI18n= {
-  enable: true,
-  path: path.join(__dirname,'../plugins/rain-i18n'),
-  // package: '',
-}
+//
+// exports.rainI18n= {
+//   enable: true,
+//   path: path.join(__dirname,'../plugins/rain-i18n'),
+//   // package: '',
+// }
