@@ -1,17 +1,15 @@
 module.exports = {
-    "Email": "email",
-    "Welcome back, %s!": "欢迎回来，%s!",                      // ctx.__('Welcome back, %s!', 'Shawn');
-    "Hello {0}! My name is {1}.": "你好 {0}! 我的名字叫 {1}。", // ctx.__('Hello {0}! My name is {1}.', ['foo', 'bar'])
-
-
 
 /*********************************************************** errcode ==> errmsg  start ***********************************************************/
   0: "success",
-  "-1": "fail",
 
+  400000: "params missing",
 
-  // 50000 第三方错误
-  50000: '系统发生了错误',	// 笼统的微信侧返回的错误
+  401000: "no auth",
+
+  404000: "path not found",
+
+  500000: 'system error',
 
   60000: '系统错误',
   61010: '查询失败',

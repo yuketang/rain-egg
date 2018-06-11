@@ -1,5 +1,5 @@
 'use strict';
-
+const path= require('path');
 // add you build-in plugin here, example:
 // exports.nunjucks = {
 //   enable: true,
@@ -31,3 +31,13 @@ exports.tracer = {
   enable: true,
   package: 'egg-tracer',
 };
+
+exports.i18n = { // enable by default
+  enable: false
+};
+
+exports.rainI18n= {
+  enable: true,
+  path: path.join(__dirname,'../plugins/rain-i18n'),
+  // package: '',
+}

@@ -14,6 +14,10 @@ module.exports = appInfo => {
         ctx.status = 500;
       },
     },
+    logger: {
+      level: 'NONE',
+      consoleLevel: 'DEBUG',
 
+    }
   };
 };
