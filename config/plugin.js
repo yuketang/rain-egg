@@ -32,9 +32,9 @@ exports.tracer = {
   package: 'egg-tracer',
 };
 
-exports.i18n = { // enable by default
-  enable: false
-};
+// exports.i18n = { // enable by default
+//   enable: true
+// };
 //
 // exports.rainI18n= {
 //   enable: true,
