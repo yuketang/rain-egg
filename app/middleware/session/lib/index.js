@@ -164,13 +164,14 @@ class Session {
             return ctx.body = 401002; // todo: 定义详细的错误码
           }
           debug('session data', ctx.session)
-          await next();
         }
       } catch (err) {
         ctx.logger.error(err);
         ctx.status = 500;           // todo: 前端遇500需要提供合理的提示，同时要上报
         return ctx.body = 500133;  // todo: 定义相关的错误码
       }
+
+      await next();
     }
   }
 
